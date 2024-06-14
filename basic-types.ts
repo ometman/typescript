@@ -1,3 +1,13 @@
+//Basic Types
+let myAge: number = 30;
+let firstName: string = "Alice";
+let isActive: boolean = true;
+let notSet: undefined = undefined;
+let nullable: null = null;
+let something: any = "Could be anything";
+let unknownValue: unknown = "Could be anything but safer than any";
+
+
 //Boolean types
 let isComplete: boolean = true;
 let isNotComplete: boolean = false;
@@ -43,4 +53,9 @@ addTwoNumbers1(2, 3) //returns 5, num3 has default value of 0
 addTwoNumbers1(2, str, 6) //returns error, num2 is optional or must be a number
 addTwoNumbers1(6, 8, 3) //returns 17, num3 default argument overruled
 
+// 
+
+type NumberOrString = string | number; //NumberOrString can be string or number
+let NumberOrString = 5;
+typeof NumberOrString ? console.log("It is a number") : console.log("Not a number")
 
