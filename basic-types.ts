@@ -3,7 +3,7 @@ let isComplete: boolean = true;
 let isNotComplete: boolean = false;
 
 //String types
-let name: string = "John Doe";
+let username: string = "John Doe";
 
 //Number type
 let age: number = 44;
@@ -26,10 +26,21 @@ unknownType = "may be some string";
 unknownType = 45; //surely a number
 unknownType = false; // surely a boolean
 
-// function & argument
+// function & parameter/argument (optional & defined)
 function Example() : void {
-    console.log("This is an alert message")
+    console.log("This is example of no argument")
 }
 
+function warnUser() : void {
+    console.log("This is a warning message")
+}
+
+function addTwoNumbers1(num1: number, num2?: number, num3: number = 0) : void {
+    console.log(num1 + num2 + num3)
+}
+//'void' indicates we are not returning anything
+addTwoNumbers1(2, 3) //returns 5, num3 has default value of 0
+addTwoNumbers1(2, str, 6) //returns error, num2 is optional or must be a number
+addTwoNumbers1(6, 8, 3) //returns 17, num3 default argument overruled
 
 
