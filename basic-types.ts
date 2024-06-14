@@ -1,3 +1,13 @@
+// TypeScript supports a set of basic types similar to JavaScript. Let's start with them:
+
+// number: Represents all kinds of numbers, including integers and floating-point numbers.
+// string: Represents textual data.
+// boolean: Represents true or false.
+// null and undefined: Represent absence of value.
+// any: Represents any type and disables type checking.
+// unknown: Represents any type but is safer than any.
+// void: Represents the absence of any type, commonly used in functions that do not return a value.
+
 //Basic Types
 let myAge: number = 30;
 let firstName: string = "Alice";
