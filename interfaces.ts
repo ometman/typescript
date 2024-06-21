@@ -156,3 +156,87 @@ let myDictionary: Dictionary = {
 
 console.log(myDictionary["one"]); // Outputs: "James"
 console.log(myDictionary["two"]); // Outputs: "Alice"
+
+
+// Combining Multiple Interfaces
+// Multiple interfaces can be used to create a 
+// more comprehensive type by combining their properties.
+
+// Defining multiple interfaces
+interface Name {
+    firstName: string;
+    lastName: string;
+}
+
+interface Address {
+    city: string;
+    country: string;
+}
+
+//Combing them into one by extending
+interface PersonDetails extends Name, Address {
+    age: number;
+}
+
+//Create an object to implement the interface
+let personDetails: PersonDetails = {
+    firstName: "Jane",
+    lastName: "Doe",
+    city: "New York",
+    country: "USA",
+    age: 28
+}
+
+console.log(personDetails.firstName); // Outputs: "Jane"
+console.log(personDetails.city); // Outputs: "New York"
+
+// Interface vs Type Alias
+// In TypeScript, interface and type can often be used interchangeably. 
+// However, there are some differences and use cases:
+
+// Typically, Interface is used to describe the shape of 
+// objects and can be extended or implemented.
+
+// Type Alias is More versatile, can be used to
+// define union types, intersections, primitive types, and more.
+// We shall look at them later.
+
+// Define a type alias
+type Point = {
+    x: number;
+    y: number;
+};
+
+// Create an object that matches the type alias
+let point: Point = {
+    x: 10,
+    y: 20
+};
+
+console.log(point.x); // Outputs: 10
+console.log(point.y); // Outputs: 20
+
+// Type alias for a union type
+type ID = number | string;
+
+let id1: ID = 123;
+let id2: ID = "ABC123";
+
+console.log(id1); // Outputs: 123
+console.log(id2); // Outputs: "ABC123"
+
+// Summary
+// Interfaces in TypeScript are a powerful tool for defining the shape and structure of objects. 
+// They help enforce type safety and clarity in your code. Here’s a quick recap of what we covered:
+
+// Basic Interfaces: Define the shape of objects with specific property types.
+// Optional Properties: Allow some properties to be optional.
+// Readonly Properties: Define properties that can’t be changed after the object is created.
+// Methods: Include methods in interfaces to describe object behavior.
+// Extending Interfaces: Build complex types by extending simpler ones.
+// Hybrid Types: Describe objects that are both functions and have properties.
+// Indexable Types: Define objects that can be indexed with dynamic keys.
+// Combining Interfaces: Combine multiple interfaces to describe more comprehensive types.
+// Interface vs Type Alias: Understand when to use interfaces or type aliases based on use cases.
+// By leveraging interfaces, you can create well-structured and type-safe applications 
+// that are easier to understand and maintain.
