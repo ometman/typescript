@@ -155,3 +155,92 @@ console.log(rect.area); // Outputs: 300
 // rect.height = -5; // Error: Height must be positive
 // Note that Getters and Setters: Provide controlled access to properties.
 
+// Inheritance
+// Classes can extend other classes to inherit their properties and methods.
+
+class ThePerson {
+    constructor(public name: string, public age: number) {}
+
+    public describe() {
+        console.log(`${this.name} is ${this.age} years old.`);
+    }
+}
+
+class Student extends ThePerson {
+    constructor(name: string, age: number, public studentId: number) {
+        super(name, age);
+    }
+
+    public study() {
+        console.log(`${this.name} is studying.`);
+    }
+}
+
+let student = new Student("Bob", 20, 12345);
+student.describe(); // Outputs: "Bob is 20 years old."
+student.study(); // Outputs: "Bob is studying."
+
+// Abstract Classes
+// Abstract classes cannot be instantiated and 
+// are meant to be extended by other classes. 
+// They can define abstract methods that must be implemented by subclasses.
+// Put abstract methods on abstract classes
+
+abstract class TheAnimal {
+    constructor(public name: string) {}
+
+    abstract makeSound(): void;
+
+    public move() {
+        console.log(`${this.name} is moving.`);
+    }
+}
+
+class Dog extends TheAnimal {
+    constructor(name: string) {
+        super(name);
+    }
+
+    public makeSound() {
+        console.log(`${this.name} barks.`);
+    }
+}
+
+let dog = new Dog("Buddy");
+dog.makeSound(); // Outputs: "Buddy barks."
+dog.move(); // Outputs: "Buddy is moving."
+
+
+
+// Static Properties and Methods
+// Static properties and methods belong to the class itself, 
+// not to instances of the class.
+
+class MathHelper {
+    static PI: number = 3.14159;
+
+    static calculateCircumference(diameter: number): number {
+        return diameter * this.PI;
+    }
+}
+
+console.log(MathHelper.PI); // Outputs: 3.14159
+console.log(MathHelper.calculateCircumference(10)); // Outputs: 31.4159
+
+
+// Summary
+// Classes in TypeScript allow you to create blueprints for objects, 
+// encapsulating data and behavior in a structured and organized way. 
+
+// They bring the principles of object-oriented programming to TypeScript, 
+// with additional type safety and features. Here’s a recap of the key concepts:
+
+// Class Declaration: Defines the structure and behavior of an object.
+// Constructor: Initializes object properties when an instance is created.
+// Properties: Variables that hold data associated with the class.
+// Methods: Functions that define the behavior of the class.
+// Access Modifiers: Control visibility of properties and methods (public, private, protected).
+// Getters and Setters: Provide controlled access to properties.
+// Inheritance: Allows one class to extend another, inheriting its properties and methods.
+// Abstract Classes: Define methods that must be implemented by subclasses, but cannot be instantiated themselves.
+// Static Properties and Methods: Belong to the class itself rather than instances.
