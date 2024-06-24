@@ -244,3 +244,113 @@ console.log(MathHelper.calculateCircumference(10)); // Outputs: 31.4159
 // Inheritance: Allows one class to extend another, inheriting its properties and methods.
 // Abstract Classes: Define methods that must be implemented by subclasses, but cannot be instantiated themselves.
 // Static Properties and Methods: Belong to the class itself rather than instances.
+
+
+
+// Difference between Private and Abstract Members of a Class
+// Private Members
+// Visibility: Only accessible within the class they are defined in.
+// Encapsulation: Helps in hiding the internal implementation and protects 
+// data from unauthorized access or modification.
+// Instance-Level: They are associated with each instance of the class. 
+// Each instance has its own copy of private members.
+
+class MyBankAccount {
+    private balance: number;
+
+    constructor(initialBalance: number) {
+        this.balance = initialBalance;
+    }
+
+    public deposit(amount: number) {
+        this.balance += amount;
+        console.log(`Deposited ${amount}. New balance is ${this.balance}.`);
+    }
+
+    public getBalance() {
+        return this.balance;
+    }
+}
+
+let myaccount = new MyBankAccount(1000);
+account.deposit(500); // Deposited 500. New balance is 1500.
+console.log(myaccount.getBalance()); // Outputs: 1500
+// console.log(account.balance); 
+// Error: Property 'balance' is private and only accessible within class 'BankAccount'.
+
+// The balance property is private, meaning it can only be accessed 
+// and modified through the deposit and getBalance methods.
+// Direct access to balance from outside the class is not allowed, 
+// ensuring encapsulation.
+
+
+
+// Static Members
+
+// Class-Level: They are associated with the class itself, 
+// not with any particular instance.
+// Shared: All instances of the class share the same static members.
+// Direct Access: They can be accessed using the class 
+// name rather than through an instance.
+
+class MathsHelper {
+    static PI: number = 3.14159;
+
+    static calculateCircumference(diameter: number): number {
+        return diameter * MathsHelper.PI;
+    }
+}
+
+console.log(MathsHelper.PI); // Outputs: 3.14159
+console.log(MathsHelper.calculateCircumference(10)); // Outputs: 31.4159
+
+// You cannot access static members through an instance
+let helper = new MathsHelper();
+// console.log(helper.PI); // Error: Property 'PI' is a static member and cannot be accessed through an instance
+
+
+// The PI property and calculateCircumference method are static, 
+// meaning they belong to the MathHelper class itself.
+// They are accessed directly through the class name (MathHelper) 
+// and not through any instance.
+
+// Differences Between private and static
+// Aspect	private	static
+// Visibility	Accessible only within the class they are defined in.	Accessible through the class name, not instances.
+// Association	Tied to individual instances of the class.	Tied to the class itself, not to any instance.
+// Usage	Used to hide and encapsulate data within a class.	Used for shared data or methods that are common to all instances.
+// Access	Accessed through instance methods or properties.	Accessed directly through the class name.
+// Inheritance	Not accessible outside the class, even in derived classes.	Inherited by derived classes but still accessed via the class name.
+// Instance vs Class	Each instance has its own copy.	Only one copy exists for the entire class.
+
+
+// Combined Example
+// Here’s an example that combines both private and static members in a class:
+
+class Employee {
+    private id: number;
+    private name: string;
+    private static employeeCount: number = 0;
+
+    constructor(id: number, name: string) {
+        this.id = id;
+        this.name = name;
+        Employee.employeeCount++;
+    }
+
+    public static getEmployeeCount(): number {
+        return Employee.employeeCount;
+    }
+
+    public describe() {
+        console.log(`Employee ID: ${this.id}, Name: ${this.name}`);
+    }
+}
+
+let emp1 = new Employee(1, "Alice");
+let emp2 = new Employee(2, "Bob");
+
+emp1.describe(); // Outputs: Employee ID: 1, Name: Alice
+emp2.describe(); // Outputs: Employee ID: 2, Name: Bob
+
+console.log(Employee.getEmployeeCount()); // Outputs: 2
