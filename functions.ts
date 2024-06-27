@@ -120,3 +120,59 @@ function calculateTotal(price: number, discount: number = 0.1): number {
 
 console.log(calculateTotal(100)); // Outputs: 90
 console.log(calculateTotal(100, 0.2)); // Outputs: 80
+
+
+// 6. Rest Parameters
+// Rest parameters allow a function to accept an arbitrary number of arguments. 
+// They are represented by ... followed by the parameter name and are treated as an array.
+
+function sumAll(...numbers: number[]): number {
+    return numbers.reduce((sum, num) => sum + num, 0);
+}
+
+console.log(sumAll(1, 2, 3, 4)); // Outputs: 10
+console.log(sumAll(10, 20, 30)); // Outputs: 60
+
+
+// 7. Function Overloading
+// Function overloading allows you to define multiple signatures for a single function. 
+// This is useful when a function can accept different types or numbers of parameters.
+
+// Function overloads
+function format(input: string): string;
+function format(input: number): string;
+
+// Implementation that handles both signatures
+function format(input: any): string {
+    if (typeof input === "string") {
+        return `String: ${input}`;
+    } else if (typeof input === "number") {
+        return `Number: ${input.toFixed(2)}`;
+    }
+    return '';
+}
+
+console.log(format("Hello")); // Outputs: "String: Hello"
+console.log(format(123.456)); // Outputs: "Number: 123.46"
+
+// In this example:
+
+// There are two overloads for the format function: 
+// one that accepts a string and another that accepts a number.
+// The actual implementation handles both types using type checking.
+
+// Summary
+// Functions in TypeScript are powerful tools for building modular, 
+// reusable code. By understanding the various ways to define and use 
+// functions, you can write more robust and maintainable code. Here’s a quick recap:
+
+// Function Declaration: Defines a named function with specified parameter and return types.
+// Function Expression: Assigns an anonymous or named function to a variable.
+// Arrow Function: Provides a concise syntax and lexically binds this.
+// Function Types: Defines the types of parameters and return values explicitly.
+// Optional and Default Parameters: Allow flexibility in how functions are called.
+// Rest Parameters: Handle multiple arguments as an array.
+// Function Overloading: Define multiple signatures for a function to handle 
+// different parameter types or counts.
+// These features make functions in TypeScript versatile and essential 
+// for any TypeScript developer.
