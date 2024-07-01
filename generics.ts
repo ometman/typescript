@@ -256,3 +256,61 @@ console.log(booleanArrayPair); // Outputs: [true, [1, 2, 3]]
 
 // The pair function accepts two type parameters, T and U.
 // It returns a tuple containing values of types T and U.
+
+// 7. Advanced Generics Usage
+// Generics can be combined with other TypeScript features 
+// for more advanced use cases:
+
+// a. Generic Classes with Constraints
+
+class Collection<T extends { id: number }> {
+    private items: T[] = [];
+
+    add(item: T): void {
+        this.items.push(item);
+    }
+
+    find(id: number): T | undefined {
+        return this.items.find(item => item.id === id);
+    }
+}
+
+let collection = new Collection<{ id: number, name: string }>();
+collection.add({ id: 1, name: "Item 1" });
+collection.add({ id: 2, name: "Item 2" });
+
+console.log(collection.find(1)); // Outputs: { id: 1, name: 'Item 1' }
+
+// b. Generic Interfaces with Multiple Constraints
+
+interface HasId {
+    id: number;
+}
+
+interface HasName {
+    name: string;
+}
+
+function display<T extends HasId & HasName>(obj: T): void {
+    console.log(`ID: ${obj.id}, Name: ${obj.name}`);
+}
+
+display({ id: 123, name: "Alice" }); // Outputs: ID: 123, Name: Alice
+// The generic type T must have both id and name properties.
+
+// Summary
+// Generics in TypeScript provide a powerful way to create reusable and flexible components. 
+// By using generics, you can write code that can operate on various 
+// types while ensuring type safety. Here’s a quick recap of the key points:
+
+// Generic Functions: Functions that can accept parameters and return values 
+// of any type specified at the call site.
+// Generic Interfaces: Interfaces that can define a generic type.
+// Generic Classes: Classes that can operate with different types.
+// Generic Constraints: Restricting the types that can be used with generics 
+// to those that meet specific criteria.
+// Default Type Parameters: Providing default types for generics.
+// Using Multiple Type Parameters: Handling more than one generic type 
+// in a single declaration.
+// These concepts make generics an essential feature for building scalable 
+// and maintainable applications in TypeScript.
