@@ -77,6 +77,6 @@ export function subtract(a: number, b: number): number {
 }
 
 
-// a. Default Exports
+// b. Default Exports
 // Default exports are used when a module exports a single item as its main export. 
 // You can only have one default export per module.
