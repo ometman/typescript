@@ -80,3 +80,58 @@ export function subtract(a: number, b: number): number {
 // b. Default Exports
 // Default exports are used when a module exports a single item as its main export. 
 // You can only have one default export per module.
+// file: utility.ts
+export default function greet(name: string): string {
+    return `Hello, ${name}!`;
+}
+
+
+// 3. Importing
+// Importing allows you to use the functionality provided by other modules. 
+// There are different ways to import, depending on whether you're 
+// importing named exports or a default export.
+
+// Importing Named Exports
+// When importing named exports, you use the names defined in the exporting module.
+
+// file: app.ts
+import { add, subtract } from './math';
+
+console.log(add(2, 3)); // Outputs: 5
+console.log(subtract(5, 2)); // Outputs: 3
+
+// You can also rename imported items using the as keyword.
+
+import { add as sum, subtract as difference } from './math';
+
+console.log(sum(2, 3)); // Outputs: 5
+console.log(difference(5, 2)); // Outputs: 3
+
+// Importing Default Exports
+// When importing a default export, you can choose any name for the imported item.
+// file: app.ts
+import greet from './utility';
+
+console.log(greet("Alice")); // Outputs: Hello, Alice!
+
+
+// 4. Re-exporting
+// Re-exporting allows you to create a module that aggregates 
+// exports from other modules. This is useful for creating a 
+// central point of access for various functionalities.
+
+// file: allFunctions.ts
+export { add, subtract } from './math';
+export { default as greet } from './utility';
+
+// file: app.ts
+import { add, subtract, greet } from './allFunctions';
+
+console.log(add(2, 3)); // Outputs: 5
+console.log(subtract(5, 2)); // Outputs: 3
+console.log(greet("Alice")); // Outputs: Hello, Alice!
+
+// In this example:
+
+// allFunctions.ts re-exports functionality from math.ts and utility.ts.
+// app.ts imports everything from allFunctions.ts.
