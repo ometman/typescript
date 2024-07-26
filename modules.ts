@@ -154,3 +154,25 @@ import React from 'react'; // Installed via npm
 // Note:
 // TypeScript configuration (tsconfig.json) can influence how module resolution works, 
 // particularly with the baseUrl and paths options.
+
+// 6. Namespaces vs. Modules
+// Namespaces and modules are both ways to organize code, 
+// but they serve different purposes and have different use cases.
+
+// a. Namespaces: Used to organize code within a single file or module. 
+// They provide a way to group related functionality under a single namespace. 
+// They are often used in older codebases or when 
+// working with large libraries that need internal structuring.
+
+namespace Utilities {
+    export function logMessage(message: string) {
+        console.log(message);
+    }
+}
+
+Utilities.logMessage("Hello, World!"); // Outputs: Hello, World!
+
+
+// b. Modules: Used to organize code across multiple files. 
+// They are the modern standard for code organization 
+// and are preferred over namespaces for new code.
