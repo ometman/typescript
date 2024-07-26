@@ -135,3 +135,22 @@ console.log(greet("Alice")); // Outputs: Hello, Alice!
 
 // allFunctions.ts re-exports functionality from math.ts and utility.ts.
 // app.ts imports everything from allFunctions.ts.
+
+// 5. Module Resolution
+// Module resolution is the process TypeScript uses to find and load modules. 
+// It involves interpreting the module paths and locating the corresponding files.
+
+// a. Relative Paths: Used for modules in the same directory or a subdirectory. 
+// They start with ./ or ../
+import { add } from './math';
+
+
+// b. Non-Relative Paths: Used for modules installed via package managers (like npm). 
+// They don’t start with ./ or ../
+
+import * as fs from 'fs'; // Node.js built-in module
+import React from 'react'; // Installed via npm
+
+// Note:
+// TypeScript configuration (tsconfig.json) can influence how module resolution works, 
+// particularly with the baseUrl and paths options.
