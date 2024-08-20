@@ -1,4 +1,4 @@
-//Arrays and Tuples
+Arrays and Tuples
 
 // TypeScript supports typed arrays:
 // Simple array type: Use the type followed by [].

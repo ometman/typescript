@@ -1,28 +1,3 @@
-// Typescript supports a set of basic types similar to JavaScript. 
-// Let’s briefly look at each and how to declare each. 
-// Note how each has the variable key word, variable name, a colon, type name, 
-// assignment symbol and the value.
-// So we have: keyword Variable: Type = Value
-
-// TypeScript supports a set of basic types similar to JavaScript. Let's start with them:
-
-// number: Represents all kinds of numbers, including integers and floating-point numbers.
-// string: Represents textual data.
-// boolean: Represents true or false.
-// null and undefined: Represent absence of value.
-// any: Represents any type and disables type checking.
-// unknown: Represents any type but is safer than any.
-// void: Represents the absence of any type, commonly used in functions that do not return a value.
-
-//Basic Types
-let myAge: number = 30;
-let firstName: string = "Alice";
-let isActive: boolean = true;
-let notSet: undefined = undefined;
-let nullable: null = null;
-let something: any = "Could be anything";
-let unknownValue: unknown = "Could be anything but safer than any";
-
 //Arrays
 // TypeScript supports typed arrays:
 // Simple array type: Use the type followed by [].
